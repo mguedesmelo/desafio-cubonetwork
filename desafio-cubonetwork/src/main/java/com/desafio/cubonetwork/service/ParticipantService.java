@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.desafio.cubonetwork.model.Participant;
-import com.desafio.cubonetwork.model.Participation;
 import com.desafio.cubonetwork.repository.ParticipantRepository;
 
 @Service
@@ -26,7 +25,7 @@ public class ParticipantService {
 		this.participantRepository.delete(participant);
 	}
 
-	public List<Participation> findAllByParticipant(Participant participant) {
-		return this.participantRepository.findAllByParticipant(participant);
-	}
+//	public List<Participation> findAllByParticipant(Participant participant) {
+//		return this.participantRepository.findAllByParticipant(participant);
+//	}
 }
