@@ -37,5 +37,9 @@ public class Participant extends BaseEntity {
 	@Fetch(FetchMode.SELECT)
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "participant_id")
-	private List<Participation> cars = new ArrayList<Participation>(0);
+	private final List<Participation> participations = new ArrayList<Participation>(0);
+
+	public void addParticipation(BigDecimal participation) {
+		this.participations.add(new Participation(participation, this));
+	}
 }
