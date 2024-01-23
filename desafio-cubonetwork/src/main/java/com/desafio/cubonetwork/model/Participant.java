@@ -32,8 +32,8 @@ public class Participant extends BaseEntity {
 	@Column(name = "last_name", length = 60, nullable = false)
 	private String lastName;
 
-	@Column(name = "total_participation", nullable = false)
-	private BigDecimal totalParticipation;
+	@Column(name = "max_participation", nullable = false)
+	private BigDecimal maxParticipation;
 
 	// FIXME Configure to lazy
 	@Fetch(FetchMode.SELECT)

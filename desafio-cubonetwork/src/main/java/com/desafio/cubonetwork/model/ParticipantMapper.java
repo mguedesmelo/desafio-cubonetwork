@@ -15,7 +15,7 @@ public class ParticipantMapper extends BaseMapper {
 			return null;
 		}
 		return new ParticipantRequestDto(participant.getId(), participant.getFirstName(), 
-				participant.getLastName(), participant.getTotalParticipation());
+				participant.getLastName(), participant.getMaxParticipation());
 	}
 
 	public Participant toModel(ParticipantRequestDto participantDto) {
@@ -23,7 +23,7 @@ public class ParticipantMapper extends BaseMapper {
 		toReturn.setId(participantDto.id());
 		toReturn.setFirstName(participantDto.firstName());
 		toReturn.setLastName(participantDto.lastName());
-		toReturn.setTotalParticipation(participantDto.totalParticipation());
+		toReturn.setMaxParticipation(participantDto.maxParticipation());
 
 		return toReturn;
 	}

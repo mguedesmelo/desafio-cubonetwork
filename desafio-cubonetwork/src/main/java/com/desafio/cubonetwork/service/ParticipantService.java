@@ -31,9 +31,11 @@ public class ParticipantService {
 
 			BigDecimal totalParticipation = listParticipations.stream().reduce(
 					 BigDecimal.ZERO, BigDecimal::add);
-			
+
+			BigDecimal percent = participant.getMaxParticipation().multiply(totalParticipation).divide(new BigDecimal(100));
+
 			return new ParticipationResponseDto(participant.getFirstName(), participant.getLastName(),
-					participant.getTotalParticipation(), totalParticipation);
+					participant.getMaxParticipation(), totalParticipation, percent);
 		}).collect(Collectors.toList());
 	}
 
