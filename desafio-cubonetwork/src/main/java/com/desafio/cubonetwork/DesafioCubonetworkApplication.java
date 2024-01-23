@@ -25,7 +25,7 @@ public class DesafioCubonetworkApplication implements CommandLineRunner {
 	}
 
 	private void createMockParticipants() {
-		Participant carlosMoura = new Participant("Carlos", "Moura", BigDecimal.valueOf(100));
+		Participant carlosMoura = new Participant("Carlos", "Moura", BigDecimal.valueOf(200));
 		carlosMoura.addParticipation(BigDecimal.valueOf(2));
 		carlosMoura.addParticipation(BigDecimal.valueOf(3));
 

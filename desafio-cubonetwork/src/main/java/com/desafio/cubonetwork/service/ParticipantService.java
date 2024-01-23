@@ -1,6 +1,7 @@
 package com.desafio.cubonetwork.service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,10 +33,12 @@ public class ParticipantService {
 			BigDecimal totalParticipation = listParticipations.stream().reduce(
 					 BigDecimal.ZERO, BigDecimal::add);
 
-			BigDecimal percent = participant.getMaxParticipation().multiply(totalParticipation).divide(new BigDecimal(100));
+			BigDecimal percentage = participant.getMaxParticipation()
+					.multiply(totalParticipation)
+					.divide(new BigDecimal(100), 2, RoundingMode.UNNECESSARY);
 
 			return new ParticipationResponseDto(participant.getFirstName(), participant.getLastName(),
-					participant.getMaxParticipation(), totalParticipation, percent);
+					participant.getMaxParticipation(), totalParticipation, percentage);
 		}).collect(Collectors.toList());
 	}
 

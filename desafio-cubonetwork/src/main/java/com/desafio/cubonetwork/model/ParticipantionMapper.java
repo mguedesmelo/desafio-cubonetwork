@@ -14,7 +14,8 @@ public class ParticipantionMapper extends BaseMapper {
 		if (participation == null) {
 			return null;
 		}
-		return new ParticipationRequestDto(participation.getId(), participation.getParticipant().getId(), 
+		return new ParticipationRequestDto(participation.getId(), 
+				participation.getParticipant().getId(), 
 				participation.getParticipation());
 	}
 
