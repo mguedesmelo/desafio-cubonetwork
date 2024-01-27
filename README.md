@@ -25,12 +25,12 @@ https://github.com/cubonetwork/fullstack-challenge
 * [Spring Tools 4 for Eclipse](https://spring.io/tools) - IDE
 
 ## ⌨️ Instalation
-1. Clone the repository.
+1. Clone the repository
 
 ```
 git clone https://github.com/mguedesmelo/desafio-cubonetwork.git
 ```
-2. Import the project "desafio-cubonetwork" into eclipse sts as a maven project and run it as a spring boot application.
+2. Import the project "desafio-cubonetwork" into Eclipse STS as a maven project and run it as a spring boot application
 
 3. Open folder "desafio-cubonetwork-angular" in Visual Studio Code (must have Node.js / NPM installed)
 
