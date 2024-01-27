@@ -39,3 +39,11 @@ Execute project:
 npm run start
 ```
 Open browser and follow **http://localhost:4200** (default Angular port).
+
+## 🚧 Documentation
+
+The api documentation can be found at the following url:
+http://server:port/context-path/swagger-ui/index.html
+
+For example, if you are in the development environment, go to the following url:
+http://localhost:8080/swagger-ui/index.html
