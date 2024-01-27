@@ -3,6 +3,7 @@ package com.desafio.cubonetwork.model;
 import org.springframework.stereotype.Component;
 
 import com.desafio.cubonetwork.dto.ParticipantRequestDto;
+import com.desafio.cubonetwork.dto.ParticipantResponseDto;
 
 /**
  * Class to map the Participant entity to the ParticipantDto and vice-versa.
@@ -10,16 +11,18 @@ import com.desafio.cubonetwork.dto.ParticipantRequestDto;
  */
 @Component
 public class ParticipantMapper extends BaseMapper {
-	public ParticipantRequestDto map(Participant participant) {
+	public ParticipantResponseDto map(Participant participant) {
 		if (participant == null) {
 			return null;
 		}
-		return new ParticipantRequestDto(participant.getId(), participant.getFirstName(), 
-				participant.getLastName(), participant.getMaxParticipation());
+		return new ParticipantResponseDto(participant.getId(), participant.getFirstName(), 
+				participant.getLastName(), participant.getMaxParticipation(), 
+				participant.getTotalParticipation());
 	}
 
 	public Participant toModel(ParticipantRequestDto participantDto) {
 		Participant toReturn = new Participant();
+		// FIXME Remover id do request??
 		toReturn.setId(participantDto.id());
 		toReturn.setFirstName(participantDto.firstName());
 		toReturn.setLastName(participantDto.lastName());

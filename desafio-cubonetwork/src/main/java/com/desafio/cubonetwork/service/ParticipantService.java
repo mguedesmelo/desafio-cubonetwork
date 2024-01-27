@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.desafio.cubonetwork.dto.ParticipantRequestDto;
+import com.desafio.cubonetwork.dto.ParticipantResponseDto;
 import com.desafio.cubonetwork.dto.ParticipationRequestDto;
 import com.desafio.cubonetwork.dto.ParticipationResponseDto;
 import com.desafio.cubonetwork.model.Participant;
@@ -22,36 +23,49 @@ public class ParticipantService {
 	@Autowired
 	private ParticipantMapper participantMapper;
 
+	private ParticipationResponseDto toParticipationDto(Participant participant) {
+		if (participant == null) {
+			return null;
+		}
+
+		BigDecimal totalParticipation = participant.getTotalParticipation();
+				
+		BigDecimal percentage = participant.getMaxParticipation()
+				.multiply(totalParticipation)
+				.divide(new BigDecimal(100), 2, RoundingMode.UNNECESSARY);
+
+		return new ParticipationResponseDto(participant.getFirstName(), participant.getLastName(),
+				participant.getMaxParticipation(), totalParticipation, percentage);
+	}
+
 	public List<ParticipationResponseDto> findAll() {
 		List<Participant> participants = this.participantRepository.findAll();
 
 		return participants.stream().map(participant -> {
-			List<BigDecimal> listParticipations = participant.getParticipations().stream().map(part -> {
-				return part.getParticipation();
-			}).collect(Collectors.toList());
-
-			BigDecimal totalParticipation = listParticipations.stream().reduce(
-					 BigDecimal.ZERO, BigDecimal::add);
-
-			BigDecimal percentage = participant.getMaxParticipation()
-					.multiply(totalParticipation)
-					.divide(new BigDecimal(100), 2, RoundingMode.UNNECESSARY);
-
-			return new ParticipationResponseDto(participant.getFirstName(), participant.getLastName(),
-					participant.getMaxParticipation(), totalParticipation, percentage);
+			return toParticipationDto(participant);
 		}).collect(Collectors.toList());
 	}
 
-	public ParticipantRequestDto save(Participant participant) {
+	public ParticipationResponseDto find(Long id) {
+		Participant participant = this.participantRepository.findById(id).orElse(null);
+
+		return toParticipationDto(participant);
+	}
+
+	public ParticipantResponseDto findParticipant(Long id) {
+		return this.participantMapper.map(this.participantRepository.findById(id).orElse(null));
+	}
+
+	public ParticipantResponseDto save(Participant participant) {
 		Participant toReturn = this.participantRepository.save(participant);
 		return this.participantMapper.map(toReturn);
 	}
 
-	public ParticipantRequestDto save(ParticipantRequestDto participantRequestDto) {
+	public ParticipantResponseDto save(ParticipantRequestDto participantRequestDto) {
 		return this.save(this.participantMapper.toModel(participantRequestDto));
 	}
 
-	public ParticipantRequestDto save(ParticipationRequestDto participationRequestDto) {
+	public ParticipantResponseDto save(ParticipationRequestDto participationRequestDto) {
 		Participant participant = this.participantRepository.findById(
 				participationRequestDto.idParticipant()).orElseThrow();
 		participant.addParticipation(participationRequestDto.participation());
@@ -59,6 +73,7 @@ public class ParticipantService {
 	}
 
 	public void delete(ParticipantRequestDto participantRequestDto) {
+		// FIXME Remover id do request??
 		this.participantRepository.deleteById(participantRequestDto.id());
 	}
 }

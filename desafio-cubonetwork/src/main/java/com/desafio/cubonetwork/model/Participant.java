@@ -3,6 +3,7 @@ package com.desafio.cubonetwork.model;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -43,5 +44,13 @@ public class Participant extends BaseEntity {
 
 	public void addParticipation(BigDecimal participation) {
 		this.participations.add(new Participation(participation, this));
+	}
+
+	public BigDecimal getTotalParticipation() {
+		List<BigDecimal> listParticipations = this.participations.stream().map(part -> {
+			return part.getParticipation();
+		}).collect(Collectors.toList());
+
+		return listParticipations.stream().reduce(BigDecimal.ZERO, BigDecimal::add);
 	}
 }

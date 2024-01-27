@@ -2,6 +2,13 @@ package com.desafio.cubonetwork.dto;
 
 import java.math.BigDecimal;
 
-public record ParticipantRequestDto(Long id, String firstName, String lastName, BigDecimal maxParticipation) {
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
+public record ParticipantRequestDto(
+		Long id, 
+		@NotNull String firstName, 
+		@NotNull String lastName, 
+		@NotNull @Positive BigDecimal maxParticipation) {
 
 }
