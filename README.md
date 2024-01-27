@@ -1,6 +1,6 @@
 # Cubo Network - { "developer": "fullstack" }
 
-This repository is the challenge of Cubo Network solved. The challenge could be found here:
+This repository contains the source code to solve the network cube challenge. The challenge can be found here:
 
 https://github.com/cubonetwork/fullstack-challenge
 
@@ -30,11 +30,9 @@ https://github.com/cubonetwork/fullstack-challenge
 ```
 git clone https://github.com/mguedesmelo/desafio-cubonetwork.git
 ```
-2. Import project "desafio-cubonetwork" in Eclipse STS as a maven project and execute as a Spring Boot application
+2. Import the project "desafio-cubonetwork" into eclipse sts as a maven project and run it as a spring boot application.
 
-3. Open folder "desafio-cubonetwork-angular" in Visual Studio Code
-
-Must have Node.js / NPM installed.
+3. Open folder "desafio-cubonetwork-angular" in Visual Studio Code (must have Node.js / NPM installed)
 
 Execute project:
 ```
