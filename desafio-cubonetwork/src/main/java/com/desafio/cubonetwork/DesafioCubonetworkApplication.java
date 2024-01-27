@@ -50,7 +50,5 @@ public class DesafioCubonetworkApplication implements CommandLineRunner {
 		this.participantService.save(hugoSilva);
 		this.participantService.save(elizaSouza);
 		this.participantService.save(andersonSantos);
-		
-//		System.out.println("Participants created");
 	}
 }
