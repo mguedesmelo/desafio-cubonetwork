@@ -11,6 +11,6 @@ FROM openjdk:17-jdk-slim
 
 EXPOSE 8080
 
-COPY --from=build /target/desafio-cubonetwork-0.0.1-SNAPSHOT.jar desafio-cubonetwork.jar
+COPY --from=build /target/DesafioCuboNetwork-0.0.1-SNAPSHOT.jar cubonetwork.jar
 
-ENTRYPOINT [ "java", "-jar", "desafio-cubonetwork.jar" ]
+ENTRYPOINT [ "java", "-jar", "cubonetwork.jar" ]
