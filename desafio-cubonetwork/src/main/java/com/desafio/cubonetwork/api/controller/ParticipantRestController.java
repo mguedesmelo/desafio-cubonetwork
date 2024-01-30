@@ -28,17 +28,20 @@ public class ParticipantRestController extends BaseRestController<Participant> {
 
 	@GetMapping("/api/participation")
 	public ResponseEntity<List<ParticipationResponseDto>> findAll() {
-		return ResponseEntity.status(HttpStatus.OK).body(this.participantService.findAll());
+		List<ParticipationResponseDto> toReturn = this.participantService.findAll();
+		return ResponseEntity.status(HttpStatus.OK).body(toReturn);
 	}
 
 	@GetMapping("/api/participation/{id}")
 	public ResponseEntity<ParticipationResponseDto> find(@PathVariable("id") @NotNull Long id) {
-		return ResponseEntity.status(HttpStatus.OK).body(this.participantService.find(id));
+		ParticipationResponseDto toReturn = this.participantService.find(id);
+		return ResponseEntity.status(HttpStatus.OK).body(toReturn);
 	}
 
 	@GetMapping("/api/participant/{id}")
 	public ResponseEntity<ParticipantResponseDto> findParticipant(@PathVariable("id") @NotNull Long id) {
-		return ResponseEntity.status(HttpStatus.OK).body(this.participantService.findParticipant(id));
+		ParticipantResponseDto toReturn = this.participantService.findParticipant(id);
+		return ResponseEntity.status(HttpStatus.OK).body(toReturn);
 	}
 
 	@PostMapping("/api/participant")
