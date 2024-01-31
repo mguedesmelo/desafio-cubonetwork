@@ -22,7 +22,7 @@ public class ParticipantMapper extends BaseMapper {
 
 	public Participant toModel(ParticipantRequestDto participantDto) {
 		Participant toReturn = new Participant();
-		// FIXME Remover id do request??
+		// FIXME Remove id from request?
 		toReturn.setId(participantDto.id());
 		toReturn.setFirstName(participantDto.firstName());
 		toReturn.setLastName(participantDto.lastName());
