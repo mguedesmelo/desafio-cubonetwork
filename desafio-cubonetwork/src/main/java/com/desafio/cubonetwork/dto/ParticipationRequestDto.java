@@ -9,5 +9,5 @@ public record ParticipationRequestDto(
 		Long id, 
 		@NotNull Long idParticipant, 
 		@NotNull @Positive BigDecimal participation) {
-
+	// Empty
 }

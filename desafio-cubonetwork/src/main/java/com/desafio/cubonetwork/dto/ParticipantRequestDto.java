@@ -10,5 +10,5 @@ public record ParticipantRequestDto(
 		@NotNull String firstName, 
 		@NotNull String lastName, 
 		@NotNull @Positive BigDecimal maxParticipation) {
-
+	// Empty
 }

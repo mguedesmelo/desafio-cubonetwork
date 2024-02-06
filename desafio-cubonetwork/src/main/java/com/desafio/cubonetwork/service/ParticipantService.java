@@ -29,7 +29,7 @@ public class ParticipantService {
 		}
 
 		BigDecimal totalParticipation = participant.getTotalParticipation();
-				
+
 		BigDecimal percentage = participant.getMaxParticipation()
 				.multiply(totalParticipation)
 				.divide(new BigDecimal(100), 2, RoundingMode.UNNECESSARY);

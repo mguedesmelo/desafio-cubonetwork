@@ -50,21 +50,14 @@ public class ControllerExceptionHandler {
 	public ResponseEntity<ExceptionDto> handleAuthenticationException(AuthenticationException e) {
 		return ResponseEntity.badRequest().body(
 				new ExceptionDto(HttpStatus.BAD_REQUEST.value(), "Invalid email or password"));
-//    	return new ResponseMessage(HttpStatus.BAD_REQUEST.value(), "Invalid email or password").toString();
 	}
-
-//    @ResponseStatus(HttpStatus.BAD_REQUEST)
-//    @ExceptionHandler(UsernameNotFoundException.class)
-//    public String handleUsernameNotFoundException(UsernameNotFoundException e) {
-//    	return new ResponseMessage(HttpStatus.BAD_REQUEST.value(), "Invalid email or password").toString();
-//    }
 
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(ValidationException.class)
 	public ResponseEntity<ExceptionDto> handleValidationException(ValidationException e) {
 		return ResponseEntity.badRequest().body(
 				new ExceptionDto(HttpStatus.BAD_REQUEST.value(), "Invalid fields"));
-//        return new ResponseMessage(HttpStatus.BAD_REQUEST.value(), "Invalid fields").toString();
+
 	}
 
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -72,13 +65,11 @@ public class ControllerExceptionHandler {
 	public ResponseEntity<ExceptionDto> handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
 		return ResponseEntity.badRequest().body(
 				new ExceptionDto(HttpStatus.BAD_REQUEST.value(), "Invalid fields"));
-//    	return new ResponseMessage(HttpStatus.BAD_REQUEST.value(), "Invalid fields").toString();
 	}
 
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(ConstraintViolationException.class)
 	public ResponseEntity<ExceptionDto> handleConstraintViolationException(ConstraintViolationException e) {
 		return ResponseEntity.badRequest().body(new ExceptionDto(HttpStatus.BAD_REQUEST.value(), "Invalid fields"));
-//    	return new ResponseMessage(HttpStatus.BAD_REQUEST.value(), "Invalid fields").toString();
 	}
 }
