@@ -92,7 +92,7 @@ class ParticipantRestControllerTest extends BaseRestControllerTest {
 	            .andExpect(status().isOk())
 	            .andReturn();
 
-		ObjectMapper mapper = createObjectMapper();
+		ObjectMapper mapper = createOrGetObjectMapper();
     	List<ParticipationResponseDto> list = (List<ParticipationResponseDto>) mapper.readValue(
     			result.getResponse().getContentAsString(), 
 				new TypeReference<List<ParticipationResponseDto>>() { });
